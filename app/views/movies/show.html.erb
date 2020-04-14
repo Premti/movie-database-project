@@ -20,5 +20,16 @@
   <%= @movie.release_year %>
 </p>
 
+<p> 
+<strong> Actors: </strong>
+
+<%  @movie.actors.each do |actor| %>
+<ul>
+<li><%= link_to actor.name, actor_path(actor) %>
+</ul>
+<% end %>
+</p>
+
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @character.name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @character.gender %>
+</p>
+
+<p>
+  <strong>Profession:</strong>
+  <%= @character.profession %>
+</p>
+
+<p> 
+<strong> Movies: </strong> 
+
+<%  @character.movies.each do |movie| %> 
+  <li><% movie.characters.select do |actor| %> 
+    <%= link_to movie.title, movie_path(movie) %>       </li> 
+<ul>
+<strong> Actor: </strong>
+<li><%=  link_to actor.name, actor_path(actor) %></li>
+</ul>
+<% end %>
+<%end %>
+</p>
+
+<%= link_to 'Edit', edit_character_path(@character) %> |
+<%= link_to 'Back', characters_path %>
