@@ -16,17 +16,23 @@
 </p>
 
 <p> 
-<strong> Movies: </strong> 
+<ul>
+<strong> Movie(s) this character is in: </strong>
+<% @character.movies.each do |movie| %>
+<li><%=  link_to movie.title, movie_path(movie) %></li>
+<%end %>
+</ul>
+</p>
 
-<%  @character.movies.each do |movie| %> 
-  <li><% movie.characters.select do |actor| %> 
-    <%= link_to movie.title, movie_path(movie) %>       </li> 
+<p> 
 <ul>
 <strong> Actor: </strong>
+<% @character.movies.each do |movie| %>
+  <% movie.actors.find do |actor| %>
 <li><%=  link_to actor.name, actor_path(actor) %></li>
-</ul>
-<% end %>
 <%end %>
+<%end %>
+</ul>
 </p>
 
 <%= link_to 'Edit', edit_character_path(@character) %> |

@@ -13,6 +13,8 @@
     </tr>
   </thead>
 
+  <%= link_to 'Add New Movie', new_movie_path %>
+
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
@@ -28,5 +30,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Movie', new_movie_path %>
