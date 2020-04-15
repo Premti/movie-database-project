@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_125821) do
     t.string "title"
     t.string "genre"
     t.string "synopsis"
-    t.integer "release_year"
+    t.string "release_year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

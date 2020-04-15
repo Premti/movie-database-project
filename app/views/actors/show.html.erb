@@ -15,17 +15,14 @@
   <%= @actor.age %>
 </p>
 
-<p> 
-<strong> Movies: </strong> 
-
-<%  @actor.movies.each do |movie| %> 
-  <li><% movie.characters.select do |character| %> 
-    <%= link_to movie.title, movie_path(movie) %>       </li> 
+<p>  
 <ul>
 <strong> Character: </strong>
+<% @actor.movies.each do |movie| %>
+  <% movie.characters.find do |character| %>
 <li><%=  link_to character.name, character_path(character) %></li>
 </ul>
-<% end %>
+<%end %>
 <%end %>
 </p>
 

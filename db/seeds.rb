@@ -6657,8 +6657,13 @@
 movie.each do |movie|
    the_movies = Movie.create(title: movie[:title], synopsis: movie[:synopsis], release_year: movie[:year])
     movie[:cast].each do |cast_person|
-    Actor.find_or_create_by(name: cast_person[:actor])
-       Character.find_or_create_by(name: cast_person[:character])
+    the_actors = Actor.find_or_create_by(name: cast_person[:actor])
+    MovieActor.create(movie_id: the_movies.id, actor_id: the_actors.id)
+    the_characters = Character.find_or_create_by(name: cast_person[:character])
+    MovieCharacter.create(movie_id: the_movies.id, character_id: the_characters.id)
     end
+
 end
+
+
 
