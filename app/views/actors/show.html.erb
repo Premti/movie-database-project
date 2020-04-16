@@ -18,10 +18,8 @@
 <p>  
 <ul>
 <strong> Character: </strong>
-<% @actor.movies.each do |movie| %>
-  <% movie.characters.find do |character| %>
-<li><%=  link_to character.name, character_path(character) %></li>
-<%end %>
+<% @actor.characters.each do |character| %>
+<li> <%= link_to character.name, character_path(character) %> </li>
 <%end %>
 </ul>
 </p>

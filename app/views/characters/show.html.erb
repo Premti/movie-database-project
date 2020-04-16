@@ -24,16 +24,5 @@
 </ul>
 </p>
 
-<p> 
-<ul>
-<strong> Actor: </strong>
-<% @character.movies.each do |movie| %>
-  <% movie.actors.find do |actor| %>
-<li><%=  link_to actor.name, actor_path(actor) %></li>
-<%end %>
-<%end %>
-</ul>
-</p>
-
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>

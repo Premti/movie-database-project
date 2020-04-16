@@ -6653,16 +6653,25 @@
    ]
   }
  ]
+ 
+ genre_options = ["Drama", "Horror", "Romance", "Comedy", "Action", "Mystery", "Sci-Fi", "Fantasy", "Thriller", "Crime"]
+ gender_options = ["Male", "Female"]
+ profession_options = ["Hitman", "Soldier", "Banker", "Engineer", "Police Officer", "Doctor", "Firefighter", "Hacker", "Software Engineer", "Spy", "Gangster", "Warrior"]
 
 movie.each do |movie|
-   the_movies = Movie.create(title: movie[:title], synopsis: movie[:synopsis], release_year: movie[:year])
+   the_movies = Movie.create(title: movie[:title], synopsis: movie[:synopsis], release_year: movie[:year], genre: genre_options.sample)
     movie[:cast].each do |cast_person|
-    the_actors = Actor.find_or_create_by(name: cast_person[:actor])
+    the_actors = Actor.find_by(name: cast_person[:actor])
+    if the_actors == nil
+        the_actors = Actor.create(name: cast_person[:actor], age: rand(18..60), gender: gender_options.sample)
+    end
     MovieActor.create(movie_id: the_movies.id, actor_id: the_actors.id)
-    the_characters = Character.find_or_create_by(name: cast_person[:character])
+    the_characters = Character.find_by(name: cast_person[:character], actor:the_actors)
+    if the_characters == nil
+        the_characters = Character.create(name: cast_person[:character], actor:the_actors, gender: gender_options.sample, profession: profession_options.sample)
+    end
     MovieCharacter.create(movie_id: the_movies.id, character_id: the_characters.id)
     end
-
 end
 
 
