@@ -2,8 +2,13 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
  
+
   def index
     @movies = Movie.all
+    if params[:search]
+      @search_term = params[:search]
+      @movies = @movies.search_by(@search_term)
+    end
   end
 
   def show
@@ -45,6 +50,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:title, :genre, :synopsis, :release_year)
+      params.require(:movie).permit(:title, :genre, :synopsis, :release_year, :search)
     end
 end

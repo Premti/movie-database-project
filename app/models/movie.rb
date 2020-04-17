@@ -9,4 +9,8 @@ class Movie < ApplicationRecord
     validates :release_year, presence: true
     validates :synopsis, length: {in: 50..500}
 
+    def self.search_by(search_term)
+        where("LOWER(name) LIKE :search_term", search_term: "#{search_term}")
+    end
+
 end

@@ -1,5 +1,7 @@
 <h1>New Actor</h1>
 
 <%= render 'form', actor: @actor %>
+<%= f.collection_select :actor_id, Actor.all, :id, :name %>
+
 
 <%= link_to 'Back', actors_path %>

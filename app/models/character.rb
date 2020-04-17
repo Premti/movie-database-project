@@ -4,6 +4,5 @@ class Character < ApplicationRecord
     has_many :movies, through: :movie_characters
     belongs_to :actor
 
-    validates :name, presence: true
     
 end

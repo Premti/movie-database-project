@@ -2,6 +2,10 @@
 
 <h1>Movies</h1>
 
+<%= form_for "", url: movies_path, role: "search", method: :get do %>
+  <%text_field_tag :search, @search_term, placeholder: "Search..." %>
+  <% end %>
+
 <table>
   <thead>
     <tr>
