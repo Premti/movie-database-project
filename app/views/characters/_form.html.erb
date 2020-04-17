@@ -25,6 +25,8 @@
     <%= form.label :profession %>
     <%= form.text_field :profession %>
   </div>
+  
+  <%= form.collection_select :actor_id, Actor.all, :id, :name %>
 
   <div class="actions">
     <%= form.submit %>

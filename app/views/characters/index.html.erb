@@ -21,7 +21,7 @@
         <td><%= character.gender %></td>
         <td><%= character.profession %></td>
         <td><%= link_to 'Edit', edit_character_path(character) %></td>
-        <td><%= link_to 'Delete', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Delete', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
